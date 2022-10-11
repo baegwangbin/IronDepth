@@ -5,6 +5,7 @@ Official implementation of the paper
 > **IronDepth: Iterative Refinement of Single-View Depth using Surface Normal and its Uncertainty** \
 > BMVC 2022 \
 > [Gwangbin Bae](https://baegwangbin.com), [Ignas Budvytis](https://mi.eng.cam.ac.uk/~ib255/), and [Roberto Cipolla](https://mi.eng.cam.ac.uk/~cipolla/) \
+> [[arXiv]](https://arxiv.org/abs/2210.03676)
 
 
 Code will be added soon
