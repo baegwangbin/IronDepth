@@ -1,1 +1,152 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IronDepth</title>
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src="https://kit.fontawesome.com/49f46e7382.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="container is-max-desktop">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://www.cam.ac.uk/">
+                    <img src="img/logo/Cam_bw.png" alt="University of Cambridge" style="height: 2.0rem;">
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="https://bmvc2022.org/">
+                        <img class="is-hidden-touch" src="img/logo/bmvc-logo.png" style="height: 100%;" alt="BMVC 2022">
+                        <img class="is-hidden-desktop" src="img/logo/bmvc-logo.png" style="height: 100%;" alt="BMVC 2022">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h1 class="title is-2 is-size-3-mobile is-spaced has-text-centered">
+                IronDepth: Iterative Refinement of Single-View Depth using Surface Normal and its Uncertainty
+            </h1>
+            <p class="subtitle is-5 has-text-centered has-text-grey">
+                BMVC 2022
+            </p>
+            <p class="subtitle is-6 has-text-centered authors mt-5" style="line-height: 1.5;">
+                <span>
+                    <a href="https://www.baegwangbin.com">Gwangbin&nbsp;Bae</a>
+                </span>
+                <span>
+                    <a href="http://mi.eng.cam.ac.uk/~ib255/">Ignas&nbsp;Budvytis</a>
+                </span>
+                <span>
+                    <a href="https://mi.eng.cam.ac.uk/~cipolla/">Roberto&nbsp;Cipolla</a>
+                </span>
+            </p>
+        </div>
+        <div class="container is-max-desktop has-text-centered mt-5">
+            <a href="https://github.com/baegwangbin/IronDepth/raw/main/paper.pdf" class="button is-rounded is-link is-light mr-2">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+            </a>
+            <a href="https://arxiv.org/abs/2210.03676" class="button is-rounded is-link is-light mr-2">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+            </a>
+            <a href="https://github.com/baegwangbin/IronDepth" class="button is-rounded is-link is-light">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+            </a>
+        </div>
+    </section>
+    <section>
+        <div class="container is-max-desktop">
+            <figure class="image">
+                <img src="img/sx-data.jpg" class="is-hidden-mobile"/>
+                <img src="img/sx-data-narrow.jpg" class="is-hidden-tablet" />
+            </figure>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h1 class="title is-4">
+                Abstract
+            </h1>
+            <div class="content has-text-justified-desktop">
+                Single image surface normal estimation and depth estimation are closely related problems as the former can be calculated from the latter. 
+                However, the surface normals computed from the output of depth estimation methods are significantly less accurate than the surface normals directly estimated by networks. 
+                To reduce such discrepancy, we introduce a novel framework that uses surface normal and its uncertainty to recurrently refine the predicted depth-map. 
+                The depth of each pixel can be propagated to a query pixel, using the predicted surface normal as guidance. 
+                We thus formulate depth refinement as a classification of choosing the neighboring pixel to propagate from. 
+                Then, by propagating to sub-pixel points, we upsample the refined, low-resolution output. 
+                The proposed method shows state-of-the-art performance on NYUv2 and iBims-1 - both in terms of depth and normal. 
+                Our refinement module can also be attached to the existing depth estimation methods to improve their accuracy. 
+                We also show that our framework, only trained for depth estimation, can also be used for depth completion. 
+                The code is available at https://github.com/baegwangbin/IronDepth.
+            </div>
+        </div>
+    </section>
+    <section class="section pt-0">
+        <div class="container is-max-desktop">
+            <h1 class="title is-4">
+                BibTeX
+            </h1>
+            <pre>
+@inproceedings{bae2022irondepth,
+    title={IronDepth: Iterative Refinement of Single-View Depth using Surface Normal and its Uncertainty},
+    author={Bae, Gwangbin and Budvytis, Ignas and Cipolla, Roberto},
+    booktitle={British Machine Vision Conference (BMVC)},
+    year={2022}
+}
+</pre>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <img src="img/logo/Cam_bw.png" class="mt-5" alt="University of Cambridge" style="height: 2rem;">
+            </p>
+        </div>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+    });
+</script>
+
+</html>
