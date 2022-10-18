@@ -8,20 +8,52 @@ Official implementation of the paper
 > [[arXiv]](https://arxiv.org/abs/2210.03676) [[demo]](https://www.youtube.com/watch?v=mf8keH9brF0) [[project page]](https://baegwangbin.github.io/IronDepth/)
 
 <p align="center">
-  <img width=70% src="https://github.com/baegwangbin/IronDepth/blob/main/docs/img/irondepth/IronDepth_short.gif">
+  <img width=100% src="https://github.com/baegwangbin/IronDepth/blob/main/docs/img/irondepth/IronDepth_short.gif">
 </p>
 
 ## Summary
 
 * We use surface normal to propagate depth between pixels.
 * We formulate depth refinement/upsampling as classification of choosing the neighboring pixel to propagate from.
-* Our method can be used as a post-processing tool to improve the accuracy of the existing depth estimation methods.
-* Our method can seamlessly be applied to depth completion. Sparse depth measurements to can be propagated to the neighboring pixels, improving the accuracy of the overall prediction.
 
+## Getting Started
+
+We recommend using a virtual environment.
+```
+python3.6 -m venv --system-site-packages ./venv
+source ./venv/bin/activate
+```
+
+Install the necessary dependencies by
+```
+python3.6 -m pip install -r requirements.txt
+```
+
+Go to this [google drive](https://drive.google.com/drive/folders/1idIVqOrJOK6kuidBng1K8sth-CyOfcCj?usp=sharing), and
+
+* Download `*.pt` and place them under `./checkpoints`. 
+* Download and unzip `examples.zip` as `./examples`.
+
+## Testing
+
+```python
+# test on scannet images, using the model trained on scannet
+python test.py --train_data scannet --test_data scannet
+
+# test on nyuv2 images, using the model trained on nyuv2
+python test.py --train_data nyuv2 --test_data nyuv2
+
+# test on your own images, using the model trained on scannet
+python test.py --train_data scannet --test_data custom
+```
+
+* This generates output visualizations under `./examples/output/dataset_name/`.
+* Comment out unnecessary visualization scripts to speed things up.
+* When testing on your own images, you should place the images under `./examples/data/custom/`. We support `.png` and `.jpg` files. If you wish to provide the camera intrinsics, add a file named `img_name.txt`. The file should contain `fx`, `fy`, `cx` and `cy`. See `./examples/data/custom/ex01.txt` as an example.
 
 ## Citation
 
-If you find our work useful in your research please consider citing our paper:
+If you find our work useful in your research please consider citing our papers:
 
 ```
 @InProceedings{Bae2022,
@@ -32,3 +64,11 @@ If you find our work useful in your research please consider citing our paper:
 }
 ```
 
+```
+@InProceedings{Bae2021,
+    title   = {Estimating and Exploiting the Aleatoric Uncertainty in Surface Normal Estimation}
+    author  = {Gwangbin Bae and Ignas Budvytis and Roberto Cipolla},
+    booktitle = {International Conference on Computer Vision (ICCV)},
+    year = {2021}                         
+}
+```
