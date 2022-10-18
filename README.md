@@ -13,7 +13,7 @@ Official implementation of the paper
 
 ## Summary
 
-* We use surface normal to propagate depth between pixels.
+* We use [surface normal](https://github.com/baegwangbin/surface_normal_uncertainty) to propagate depth between pixels.
 * We formulate depth refinement/upsampling as classification of choosing the neighboring pixel to propagate from.
 
 ## Getting Started
