@@ -51,6 +51,35 @@ python test.py --train_data scannet --test_data custom
 * Comment out unnecessary visualization scripts to speed things up.
 * When testing on your own images, you should place the images under `./examples/data/custom/`. We support `.png` and `.jpg` files. If you wish to provide the camera intrinsics, add a file named `img_name.txt`. The file should contain `fx`, `fy`, `cx` and `cy`. See `./examples/data/custom/ex01.txt` as an example.
 
+## Training
+
+We provide the training script for ScanNet images. It is straightforward to apply the same code for other datasets. 
+
+### Step 1. Data Preparation
+
+Firstly, go to this [google drive](https://drive.google.com/drive/folders/1idIVqOrJOK6kuidBng1K8sth-CyOfcCj?usp=sharing). Download and unzip `scannet.zip` as `./scannet`. The folder has two sub-folders named `train` and `test`. For each of them, there is a set of `scenes`. Images in each scene are assumed to be taken with the same camera. The camera intrinsics `(fx, fy, cx, cy)` should be provided as `intrins.txt`. For each image, you should have four files:
+
+* `000000_img.png`: RGB image
+* `000000_depth.png`: GT depth map
+* `000000_norm.png`: Predicted normal map
+* `000000_kappa.png`: Predicted normal uncertainty
+
+We generated normal predictions *offline* instead of generating them on the fly. If you have a dataset with no surface normal prediction, add additional scenes/images and run
+
+```
+python preprocess.py
+```
+
+### Step 2. Training
+
+To train the network, run
+
+```
+python train.py
+```
+
+Note that the provided `scannet` mini dataset only contains 100 images for training and 10 images for testing. You should train the network on a bigger dataset to obtain satisfactory results.
+
 ## Citation
 
 If you find our work useful in your research please consider citing our papers:

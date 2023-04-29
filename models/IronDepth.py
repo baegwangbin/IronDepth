@@ -140,3 +140,15 @@ class IronDepth(nn.Module):
             new_depth[torch.abs(new_depth) == float("Inf")] = 1.0  # inf        
         return new_depth
 
+
+    def get_1x_lr_params(self):
+        modules = [self.d_net.encoder]
+        for m in modules:
+            yield from m.parameters()
+
+
+    def get_10x_lr_params(self):
+        modules = [self.d_net.decoder, self.dr_net]
+        for m in modules:
+            yield from m.parameters()
+
